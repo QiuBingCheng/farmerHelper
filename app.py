@@ -15,12 +15,12 @@ from crawl_weather import get_weather
 import re
 import jieba
 from data import MARKET_NO_NAME,PRODUCT_NO_NAME,COUNTRIES
+import configparser
 jieba.load_userdict('dict.txt')
 
 app = Flask(__name__)
 config = configparser.ConfigParser()
 config.read("config.ini")
-
 
 line_bot_api = LineBotApi(config.get('line_bot','Channel_Access_Token'))
 handler = WebhookHandler(config.get('line_bot','Channel_Secret'))
