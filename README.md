@@ -3,6 +3,6 @@
 
 ## 畫面截圖
 
-![screen1](C:\Users\Jerry\Documents\GitHub\farmerHelper\image\screen1.png)
+![screen1](https://github.com/vbjc5275/farmerHelper/blob/master/image/screen1.png)
 
-![screen2](C:\Users\Jerry\Documents\GitHub\farmerHelper\image\screen2.png)
+![screen2](https://github.com/vbjc5275/farmerHelper/blob/master/image/screen1.png)
