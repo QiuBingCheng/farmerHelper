@@ -5,4 +5,4 @@
 
 ![screen1](https://github.com/vbjc5275/farmerHelper/blob/master/image/screen1.png)
 
-![screen2](https://github.com/vbjc5275/farmerHelper/blob/master/image/screen1.png)
+![screen2](https://github.com/vbjc5275/farmerHelper/blob/master/image/screen2.png)
