@@ -15,8 +15,8 @@ def get_weather(locationName):
 
     wea_ele = json_data[0]["weatherElement"]
 
-    pop = [i['time'] for i in wea_ele if i["elementName"]=="PoP"][0]
-    period_list = [[p["startTime"],p["endTime"],p['parameter']['parameterName']] for p in pop]
+    wx = [i['time'] for i in wea_ele if i["elementName"]=="Wx"][0]
+    period_list = [[w["startTime"],w["endTime"],w['parameter']['parameterName']] for w in wx]
 
     mint = [i['time'] for i in wea_ele if i["elementName"]=="MinT"][0]
     for i,item in enumerate(period_list):
@@ -30,9 +30,14 @@ def get_weather(locationName):
             if (m["startTime"]==item[0])&(m["endTime"]==item[1]):
                 period_list[i].append(m["parameter"]["parameterName"])
 
+    pop = [i['time'] for i in wea_ele if i["elementName"]=="PoP"][0]
+    for i,item in enumerate(period_list):
+        for p in pop:
+            if (p["startTime"]==item[0])&(p["endTime"]==item[1]):
+                period_list [i].append(p["parameter"]["parameterName"])
     #簡化時間
     for period in period_list:
-        period[0] = period[0][5:-3]
-        period[1] = period[1][5:-3]
+        period[0] = period[0][5:-3].replace("-","/")
+        period[1] = period[1][5:-3].replace("-","/")
 
     return period_list

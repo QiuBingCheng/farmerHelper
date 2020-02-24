@@ -142,7 +142,7 @@ def handle_message(event):
         country = country.replace("台","臺")
         period_list = get_weather(country)
         if period_list:
-            info = ["From","To","PoP","MinT","MaxT"]
+            info = ["從","到","天氣現象","最低溫度","最高溫度","降雨機率"]
             output = ""
             for period in period_list:
                 for i,ele in enumerate(period):
