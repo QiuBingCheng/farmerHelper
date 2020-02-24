@@ -1,3 +1,4 @@
+from config import Config
 from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler, exceptions)
 from linebot import (
@@ -19,12 +20,9 @@ import configparser
 jieba.load_userdict('dict.txt')
 
 app = Flask(__name__)
-config = configparser.ConfigParser()
-config.read("config.ini")
-
-line_bot_api = LineBotApi(config.get('line_bot','Channel_Access_Token'))
-handler = WebhookHandler(config.get('line_bot','Channel_Secret'))
-
+config = Config()
+line_bot_api = config.line_bot_api
+handler = config.handler
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/index", methods=['GET'])

@@ -33,7 +33,7 @@ def search(date,market_no=104,product_no="FV4"):
     data = urllib.parse.urlencode(values).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers = USER_AGENT)
     response = urllib.request.urlopen(req, data,context=ctx).read().decode("utf-8")   
-    soup = BeautifulSoup(response)
+    soup = BeautifulSoup(response,'html.parser')
     table = soup.find_all("table")[-1]
     content = table.find(class_="main_main")
     if not content:

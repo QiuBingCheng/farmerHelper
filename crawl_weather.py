@@ -1,13 +1,14 @@
 import requests
+from config import Config
+config = Config()
+open_data_url = config.weather_url
+member_token = config.member_token
 
 def get_weather(locationName):
-    url  ="https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
-    token = "CWB-C66BAF53-A26D-4472-89E4-60A009E06D16"
-
-    payload = {"Authorization":token,
+    payload = {"Authorization":member_token,
                "locationName":locationName,
                }
-    r = requests.get(url, params=payload)
+    r = requests.get(open_data_url, params=payload)
     json_data = r.json()["records"]["location"] 
 
     if not json_data:
