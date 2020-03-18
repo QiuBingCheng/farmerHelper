@@ -18,8 +18,18 @@ class Config(metaclass=Singleton):
         self.check_file(file)
         self.Channel_Secret = self.config['line_bot']['Channel_Secret']
         self.Channel_Access_Token = self.config['line_bot']['Channel_Access_Token']
-        self.weather_url = self.config["central_weather_bureau"]["open_data_url"]
+
+        self.data_path = "data/"
+
+        self.weather_api = self.config["central_weather_bureau"]["weather_api"]
         self.member_token = self.config["central_weather_bureau"]["member_token"]
+        
+        self.AQI_api = self.config["environmental_protection_administration"]["AQI_api"]
+        
+        self.vegetable_api  = self.config["agricultural_product_wholesale_market"]["vegetable_api"]
+        self.fruit_api = self.config["agricultural_product_wholesale_market"]["fruit_api"]
+        self.flower_api = self.config["agricultural_product_wholesale_market"]["flower_api"]
+
         self.handler = None
         self.line_bot_api = None
         self.line_bot_init()
