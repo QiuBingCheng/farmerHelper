@@ -56,7 +56,8 @@ def get_AQI(site_name):
     try :
         response = requests.get(AQI_api,verify=False,timeout=2).json()
     except requests.exceptions.Timeout as e:
-        return "出現錯誤！奴才辦事無力，請通知秉誠大大"
+        print(e)
+        return "出現錯誤！請稍後嘗試..."
 
     for site in response:
         if site["SiteName"] == site_name:
@@ -66,7 +67,7 @@ def get_AQI(site_name):
                        f"狀態:{site['Status']}",
                        f"發布時間:{site['PublishTime']}"]
             return "\n".join(content)
-            
+
 
 def get_county_sitename(county):
     return [site["SiteName"] for site in data if site["County"]==county]

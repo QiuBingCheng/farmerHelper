@@ -23,32 +23,32 @@ def parse_air_quality(cut_text):
         possible_site = possible_site.replace("台","臺")
         if possible_site in sitenames:
             content = get_AQI(possible_site)
-            return content
+            return ("success",content)
 
         #比對county
         for site in all_sites:
             county_name = site["County"]
             if county_name [:2] == possible_site[:2]:
-                sites_in_the_county = get_county_sitename(all_sites,county_name)
-                output = f"{county_name }有很多觀測站呢!\n"
-                output += "\n".join(sites_in_the_county)
-                return output
+                output = [county_name]
+                output.extend(get_county_sitename(all_sites,county_name))
+                return ("sites",output)
 
     else:
-        output = "沒有指定的觀測站~"
-    
-    return output
+        return ("fail","沒有指定的觀測站~")
 
 def get_sitename_in_the_county(cut_text):
+    """return sitename in the country
+    Returns:
+        tuple = ("success",[contry_name,site1,site2...])
+    """
     all_sites = get_all_sites()
     for possible_site in cut_text:
         possible_site = possible_site.replace("台","臺")
         for site in all_sites:
             county_name = site["County"]
             if county_name [:2] == possible_site[:2]:
-                sites_in_the_county = get_county_sitename(all_sites,county_name)
-                output = f"這些是{county_name}的觀測站~\n"
-                output += "\n".join(sites_in_the_county)
+                output = [county_name]
+                output.extend(get_county_sitename(all_sites,county_name))
                 return output
     else:
-        return "這裡沒有觀測站~"
+        return None

@@ -29,6 +29,13 @@ class Config(metaclass=Singleton):
         self.vegetable_api  = self.config["agricultural_product_wholesale_market"]["vegetable_api"]
         self.fruit_api = self.config["agricultural_product_wholesale_market"]["fruit_api"]
         self.flower_api = self.config["agricultural_product_wholesale_market"]["flower_api"]
+        
+        self.db = {}
+        self.db["host"] = self.config["redis"]["host"]
+        self.db["port"] = self.config["redis"]["port"]
+        self.db["password"] = self.config["redis"]["password"]
+
+        self.google_key = self.config["google"]["google_key"]
 
         self.handler = None
         self.line_bot_api = None
